@@ -18,9 +18,16 @@ jobs:
 
     strategy:
       matrix:
-        version:
+        name:
           - latest
           - lts
+        include:
+          - name: latest
+            version: x
+            check: true
+          - name: lts
+            version: 12
+            check: false
 
     runs-on: ubuntu-latest
 
@@ -31,8 +38,8 @@ jobs:
       - name: Setup
         uses: actions/setup-node@v1
         with:
-          node-version: 12
-          check-latest: ${{matrix.version == 'latest'}}
+          node-version: ${{matrix.version}}
+          check-latest: ${{matrix.check}}
 
       - name: Install
         run: npm install
