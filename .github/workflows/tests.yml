@@ -36,7 +36,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Setup
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2-beta
         with:
           node-version: ${{matrix.version}}
           check-latest: ${{matrix.check}}
